@@ -1,0 +1,7 @@
+backbone: "sentence-transformers/all-MiniLM-L6-v2"
+num_qubits: 4
+quantum_layers: 6
+fusion_method: "gated"
+embedding_type: "amplitude"
+ansatz_type: "strongly_entangling"
+use_quantum_attention: false

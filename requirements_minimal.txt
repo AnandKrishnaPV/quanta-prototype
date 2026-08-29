@@ -1,0 +1,12 @@
+torch
+pytorch-lightning
+transformers
+datasets
+pandas
+pennylane
+pennylane-lightning
+hydra-core==1.3.2
+omegaconf==2.3.0
+mlflow
+scipy
+captum

@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    @apply font-sans text-gray-100 antialiased;
+    background-color: #080A12;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Premium custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.25);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.5);
+  }
+
+  /* Better focus outlines */
+  :focus-visible {
+    outline: 2px solid rgba(139, 92, 246, 0.6);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Smooth transitions everywhere */
+  button, a, input, textarea, select {
+    transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer components {
+  /* Glassmorphism base */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .glass-card {
+    @apply bg-[#151A28] border border-white/[0.08] rounded-xl;
+  }
+  .glass-card-hover {
+    @apply glass-card transition-all duration-200 hover:bg-[#1c2336] hover:border-violet-500/30 hover:shadow-neon cursor-pointer;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 
+           text-white text-xs font-semibold tracking-wide transition-all duration-150 
+           shadow-md hover:shadow-lg hover:shadow-violet-500/25 
+           active:scale-95 active:shadow-none
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 
+           hover:border-white/20 bg-white/5 hover:bg-white/10 
+           text-xs text-gray-300 hover:text-white font-medium transition-all duration-150;
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-red-500/20 
+           bg-red-500/10 hover:bg-red-500/20 hover:border-red-500/40
+           text-xs text-red-400 hover:text-red-300 font-medium transition-all duration-150;
+  }
+  .btn-icon {
+    @apply p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/8 
+           transition-all duration-150 active:scale-90 flex items-center justify-center;
+  }
+  
+  /* Pill action button */
+  .pill {
+    @apply px-3 py-1.5 rounded-full text-[11px] font-medium 
+           bg-violet-500/10 border border-violet-500/25 text-violet-300 
+           hover:bg-violet-500/20 hover:border-violet-500/50 hover:text-white 
+           transition-all cursor-pointer whitespace-nowrap;
+  }
+  
+  /* Gate tile in circuit builder */
+  .gate-key {
+    @apply w-9 h-9 rounded-md border border-violet-500/30 bg-gradient-to-b from-[#1e1b4b] to-[#0f0e1a] 
+           text-violet-300 text-xs font-bold flex items-center justify-center 
+           cursor-grab select-none transition-all duration-100 
+           hover:bg-violet-600 hover:text-white hover:border-violet-400 hover:shadow-neon 
+           active:scale-95;
+  }
+  .gate-placed {
+    @apply w-9 h-9 rounded-md bg-violet-600 border border-violet-400 
+           text-white text-xs font-bold flex items-center justify-center 
+           shadow-neon cursor-pointer transition-all hover:bg-violet-500;
+  }
+  .gate-slot-empty {
+    @apply w-9 h-9 rounded-md border border-dashed border-white/15 
+           hover:border-violet-400/50 flex items-center justify-center 
+           text-gray-600 text-xs cursor-pointer transition-all;
+  }
+
+  /* Nav Item */
+  .nav-item {
+    @apply w-full flex items-center justify-between px-3 py-2 rounded-lg 
+           text-xs font-medium text-gray-400 hover:text-gray-100 hover:bg-white/5 
+           transition-all duration-150 cursor-pointer;
+  }
+  .nav-item-active {
+    @apply bg-violet-600/15 text-violet-300 border border-violet-500/30 shadow-sm;
+  }
+
+  /* ── Inputs ── */
+  .qation-input {
+    @apply w-full bg-[#0b0d16] border border-white/10 focus:border-violet-500/60 
+           rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-600 
+           outline-none transition-colors;
+  }
+  
+  /* ── Badges ── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold;
+  }
+  .badge-purple { @apply badge bg-violet-500/20 border border-violet-500/40 text-violet-300; }
+  .badge-green  { @apply badge bg-emerald-500/20 border border-emerald-500/40 text-emerald-300; }
+  .badge-cyan   { @apply badge bg-cyan-500/20 border border-cyan-500/40 text-cyan-300; }
+  .badge-red    { @apply badge bg-red-500/20 border border-red-500/40 text-red-300; }
+  .badge-yellow { @apply badge bg-amber-500/20 border border-amber-500/40 text-amber-300; }
+
+  /* ── Code Cells ── */
+  .code-cell {
+    @apply rounded-xl overflow-hidden border border-white/10 bg-[#0d1117];
+  }
+  .code-cell-header {
+    @apply px-4 py-2 bg-[#161b22] border-b border-white/10 flex items-center justify-between font-mono text-[11px] text-gray-500;
+  }
+  .code-pre {
+    @apply p-4 text-xs font-mono text-violet-200 leading-relaxed overflow-x-auto;
+  }
+
+  /* ── Chat message bubble ── */
+  .msg-user {
+    @apply max-w-[82%] sm:max-w-[75%] bg-gradient-to-br from-[#1e2240] to-[#161a2e] 
+           border border-white/[0.09] rounded-2xl rounded-tr-sm px-4 py-3 
+           shadow-lg shadow-black/30;
+  }
+  .msg-assistant-avatar {
+    @apply w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600/30 to-indigo-600/20 
+           border border-violet-500/40 flex items-center justify-center flex-shrink-0 mt-0.5
+           shadow-md shadow-violet-500/10;
+  }
+
+  /* ── Section headers ── */
+  .section-label {
+    @apply text-[9px] font-bold uppercase tracking-[0.15em] text-gray-500;
+  }
+
+  /* ── Card with subtle glow on hover ── */
+  .glow-card {
+    @apply rounded-xl border border-white/[0.07] bg-[#0e1120] transition-all duration-300
+           hover:border-violet-500/20 hover:bg-[#111628] hover:shadow-xl hover:shadow-violet-900/10;
+  }
+}
+
+@layer utilities {
+  .glow-text {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  }
+  .glow-text-cyan {
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .gradient-purple-cyan {
+    @apply bg-gradient-to-r from-violet-500 to-cyan-400;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-violet-300 to-violet-500 bg-clip-text text-transparent;
+  }
+  .gradient-text-cool {
+    @apply bg-gradient-to-r from-cyan-300 via-violet-300 to-purple-400 bg-clip-text text-transparent;
+  }
+  /* Subtle inner glow for active states */
+  .inner-glow {
+    box-shadow: inset 0 0 12px rgba(139, 92, 246, 0.08);
+  }
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Prevent text selection on UI elements */
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* Mobile safe area padding */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  /* Hover scale variants */
+  .hover-scale {
+    @apply transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98];
+  }
+}
+
+/* ── Background grid overlay ── */
+.bg-quantum-grid {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.18) 0%, transparent 55%),
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* ── Loading skeleton animation ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.04) 25%, 
+    rgba(255,255,255,0.08) 50%, 
+    rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── Neon pulse animation ── */
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(139,92,246,0.3), 0 0 10px rgba(139,92,246,0.1); }
+  50% { box-shadow: 0 0 10px rgba(139,92,246,0.5), 0 0 20px rgba(139,92,246,0.2); }
+}
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+/* ── Mobile improvements ── */
+@media (max-width: 640px) {
+  /* Larger tap targets on mobile */
+  button {
+    min-height: 36px;
+  }
+  /* Better font size to prevent iOS zoom on focus */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+  /* Chat input fix for mobile */
+  .chat-input-mobile {
+    font-size: 16px;
+  }
+}

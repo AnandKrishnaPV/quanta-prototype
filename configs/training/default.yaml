@@ -1,0 +1,7 @@
+batch_size: 32
+learning_rate: 3e-5
+max_epochs: 10
+patience: 3
+accumulate_grad_batches: 1
+precision: "32-true"
+gradient_clip_val: 1.0

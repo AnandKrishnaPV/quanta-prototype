@@ -1,0 +1,18 @@
+# Ignore virtual environments
+.venv/
+.venv_new/
+venv/
+env/
+# Ignore python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+# Ignore logs
+*.log
+# Ignore frontend files in the backend build
+frontend/
+# Ignore git
+.git/
+.gitignore

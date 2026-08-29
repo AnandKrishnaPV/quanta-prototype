@@ -1,0 +1,3 @@
+backend: "lightning.qubit"
+shots: null
+diff_method: "adjoint"

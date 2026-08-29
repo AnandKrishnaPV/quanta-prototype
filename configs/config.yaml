@@ -1,0 +1,10 @@
+defaults:
+  - _self_
+  - model: hybrid
+  - training: default
+  - quantum: lightning
+
+project_name: "HybridQuantumLLM"
+experiment_name: "sts_baseline"
+seed: 42
+data_dir: "./datasets"
